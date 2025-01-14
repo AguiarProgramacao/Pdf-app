@@ -1,20 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { NavigationContainer } from "@react-navigation/native";
+import HomeScreen from "./src/screens/HomeScreen";
+import TresGarantiaScreen from "./src/screens/TresGarantia";
+import TresPropostaScreen from "./src/screens/TresPropostaScreen";
+import PFGarantiaScreen from "./src/screens/PFGarantiaScreen";
+import PFPropostaScreen from "./src/screens/PFPropostaScreen";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  return(
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="TresGarantia" component={TresGarantiaScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="TresProposta" component={TresPropostaScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="PFGarantia" component={PFGarantiaScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="PFProposta" component={PFPropostaScreen} options={{ headerShown: false }} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
